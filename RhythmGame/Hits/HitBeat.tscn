@@ -1,0 +1,99 @@
+[gd_scene load_steps=9 format=3 uid="uid://cn1yketotr4ck"]
+
+[ext_resource type="Texture2D" uid="uid://ddak88fmlpivk" path="res://RhythmGame/Hits/hit_sprites.png" id="1_18ds6"]
+[ext_resource type="Script" path="res://RhythmGame/Hits/HitBeat.gd" id="1_eh67a"]
+[ext_resource type="PackedScene" uid="uid://b82pdodm7ttyg" path="res://RhythmGame/UI/LabelCustom.tscn" id="2_8d185"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5nued"]
+radius = 75.0
+
+[sub_resource type="Animation" id="Animation_y5rb1"]
+resource_name = "show"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ip2f6"]
+resource_name = "destroy"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_8tf1v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ptkx5"]
+_data = {
+"RESET": SubResource("Animation_8tf1v"),
+"destroy": SubResource("Animation_ip2f6"),
+"show": SubResource("Animation_y5rb1")
+}
+
+[node name="HitBeat" type="Node2D"]
+modulate = Color(1, 1, 1, 0)
+script = ExtResource("1_eh67a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_18ds6")
+hframes = 6
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_5nued")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ptkx5")
+}
+
+[node name="LabelCustom" parent="." instance=ExtResource("2_8d185")]
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
