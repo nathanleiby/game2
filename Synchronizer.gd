@@ -2,7 +2,7 @@ extends Node
 
 @export var bpm = 124
 
-var _beat_duration = 60.0 / bpm
+var _beat_duration = 60.0 / bpm # seconds per beat .. (60 seconds / 1 minute) * (minutes / beat) = (seconds per beat)
 var _half_beat_duration = _beat_duration * 0.5
 var _last_beat = 0
 var _last_half_beat = 0
@@ -27,4 +27,5 @@ func _process(_delta: float) -> void:
 		_last_half_beat = half_beat
 		# print("update _last_half_beat = ", _last_half_beat)
 		
+		Events.emit_signal("half_beat_incremented", {"half_beat": half_beat, "beat_duration": _beat_duration})
 	

@@ -1,14 +1,4 @@
 extends Node2D
-
-
-# TODO: setget syntax converted Godot 3 -> 4 .. works?
-@export var order_number: int = 0:
-	get:
-		return order_number
-	set(val):
-		# make the setter also handle keeping the label text in sync
-		order_number = val
-		_label.text = str(order_number)
 	
 
 var _beat_hit := false
@@ -16,7 +6,7 @@ var _beat_hit := false
 @onready var _animation_player := $AnimationPlayer
 @onready var _sprite := $Sprite2D
 @onready var _touch_area := $Area2D
-@onready var _label := $Label
+@onready var _label := $LabelCustom
 	
 func _ready():
 	_animation_player.play("show")
@@ -36,3 +26,14 @@ func _on_area_2d_input_event(viewport: Viewport, event: InputEvent, shape_idx: i
 		# run destroy animation (which calls queue_free() at the end)
 		_animation_player.play("destroy")
 		
+
+
+# TODO: setget syntax converted Godot 3 -> 4 .. works?
+@export var order_number: int = 0:
+	get:
+		return order_number
+	set(val):
+		# make the setter also handle keeping the label text in sync
+		order_number = val
+		# TODO: can this refer to _label?
+		_label.text = str(order_number)
