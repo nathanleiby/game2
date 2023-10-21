@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0w214mo7jogu"]
+
+[ext_resource type="Texture2D" uid="uid://cq7tvdy0al3ny" path="res://RhythmGame/UI/TrackPlaying/metronome_sprite.png" id="1_vsu0m"]
+[ext_resource type="Script" path="res://RhythmGame/UI/TrackPlaying/UIMetronome.gd" id="2_3c7fq"]
+
+[node name="UIMetronome" type="Sprite2D"]
+texture = ExtResource("1_vsu0m")
+script = ExtResource("2_3c7fq")

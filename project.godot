@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="2D Rhythm Game"
-run/main_scene="res://rhythm_game_demo.tscn"
+run/main_scene="res://RhythmGameDemo.tscn"
 config/features=PackedStringArray("4.1")
 
 [autoload]

@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://buqsg2peh5e0b"]
+
+[ext_resource type="Script" path="res://Synchronizer.gd" id="1_k8yt3"]
+[ext_resource type="AudioStream" uid="uid://dykm16tl242bj" path="res://RhythmGame/Tracks/Cephalopod/Cephalopod.ogg" id="2_ir51o"]
+[ext_resource type="Script" path="res://HitSpawner.gd" id="3_bnvnq"]
+[ext_resource type="PackedScene" uid="uid://cn1yketotr4ck" path="res://RhythmGame/Hits/HitBeat.tscn" id="4_k63nh"]
+[ext_resource type="Texture2D" uid="uid://mtm3sujjgbjq" path="res://RhythmGame/UI/background_shapes.png" id="5_m703h"]
+[ext_resource type="PackedScene" uid="uid://ddvulvy5kxjd2" path="res://RhythmGame/UI/TrackPlaying/UITrackPlaying.tscn" id="6_8lgwv"]
+
+[node name="RhythmGameDemo" type="Node2D"]
+
+[node name="Synchronizer" type="Node" parent="."]
+script = ExtResource("1_k8yt3")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Synchronizer"]
+stream = ExtResource("2_ir51o")
+
+[node name="HitSpawner" type="Node" parent="."]
+script = ExtResource("3_bnvnq")
+hit_beat = ExtResource("4_k63nh")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -20
+
+[node name="Shapes" type="Sprite2D" parent="Background"]
+texture = ExtResource("5_m703h")
+centered = false
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="UITrackingPlaying" parent="UI" instance=ExtResource("6_8lgwv")]

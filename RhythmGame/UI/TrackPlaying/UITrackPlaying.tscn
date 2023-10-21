@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddvulvy5kxjd2"]
+
+[ext_resource type="PackedScene" uid="uid://37b78nl1hd0c" path="res://RhythmGame/UI/TrackPlaying/UIScore.tscn" id="1_obvup"]
+[ext_resource type="PackedScene" uid="uid://c0w214mo7jogu" path="res://RhythmGame/UI/TrackPlaying/UIMetronome.tscn" id="2_tk5sd"]
+
+[node name="UITrackingPlaying" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="LabelCustom" parent="." instance=ExtResource("1_obvup")]
+layout_mode = 1
+anchors_preset = 10
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 114.0
+grow_vertical = 1
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+
+[node name="UIMetronome" parent="Control" instance=ExtResource("2_tk5sd")]
+position = Vector2(100, -100)
