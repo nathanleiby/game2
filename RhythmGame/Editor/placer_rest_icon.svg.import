@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b48k6yqsn6llq"
-path="res://.godot/imported/button_back_normal.png-abbdb06b2079ec60da2ece494442c04f.ctex"
+uid="uid://cxpw4fv6q8lgc"
+path="res://.godot/imported/placer_rest_icon.svg-af53a0a52f8e3586cb9154fd03d54ffc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://RhythmGame/UI/TrackFinished/button_back_normal.png"
-dest_files=["res://.godot/imported/button_back_normal.png-abbdb06b2079ec60da2ece494442c04f.ctex"]
+source_file="res://RhythmGame/Editor/placer_rest_icon.svg"
+dest_files=["res://.godot/imported/placer_rest_icon.svg-af53a0a52f8e3586cb9154fd03d54ffc.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false
