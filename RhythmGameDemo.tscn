@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://buqsg2peh5e0b"]
+[gd_scene load_steps=9 format=3 uid="uid://buqsg2peh5e0b"]
 
+[ext_resource type="Script" path="res://RhythmGameDemo.gd" id="1_d6mxb"]
 [ext_resource type="Script" path="res://Synchronizer.gd" id="1_k8yt3"]
+[ext_resource type="PackedScene" uid="uid://dywxq1rcv1i1k" path="res://RhythmGame/VFX/VFXScore.tscn" id="2_7cdl8"]
 [ext_resource type="AudioStream" uid="uid://dykm16tl242bj" path="res://RhythmGame/Tracks/Cephalopod/Cephalopod.ogg" id="2_ir51o"]
 [ext_resource type="Script" path="res://HitSpawner.gd" id="3_bnvnq"]
 [ext_resource type="PackedScene" uid="uid://cn1yketotr4ck" path="res://RhythmGame/Hits/HitBeat.tscn" id="4_k63nh"]
@@ -8,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://ddvulvy5kxjd2" path="res://RhythmGame/UI/TrackPlaying/UITrackPlaying.tscn" id="6_8lgwv"]
 
 [node name="RhythmGameDemo" type="Node2D"]
+script = ExtResource("1_d6mxb")
+sprite_fx = ExtResource("2_7cdl8")
 
 [node name="Synchronizer" type="Node" parent="."]
 script = ExtResource("1_k8yt3")
