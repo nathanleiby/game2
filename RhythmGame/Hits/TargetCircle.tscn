@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0ser5hx236gc"]
+
+[ext_resource type="Shader" path="res://RhythmGame/Hits/Shader.gdshader" id="1_fieum"]
+[ext_resource type="Script" path="res://RhythmGame/Hits/TargetCircle.gd" id="2_s3pka"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b34na"]
+resource_local_to_scene = true
+shader = ExtResource("1_fieum")
+shader_parameter/torus_thickness = 0.03
+shader_parameter/torus_hardness = -2.0
+shader_parameter/torus_radius = 0.5
+
+[node name="TargetCircle" type="ColorRect"]
+material = SubResource("ShaderMaterial_b34na")
+mouse_filter = 2
+color = Color(1, 1, 1, 0.607843)
+script = ExtResource("2_s3pka")

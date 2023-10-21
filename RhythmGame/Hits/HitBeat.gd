@@ -7,6 +7,7 @@ var _beat_hit := false
 @onready var _sprite := $Sprite2D
 @onready var _touch_area := $Area2D
 @onready var _label := $LabelCustom
+@onready var _target_circle := $TargetCircle
 	
 # Scoring
 const SCORE_PERFECT := 10
@@ -36,6 +37,7 @@ func setup(data: Dictionary):
 	global_position = data.global_position
 	_sprite.frame = data.color
 	_speed = 1.0 / data.beat_duration / BEAT_DELAY
+	_target_circle.setup(RADIUS_START, RADIUS_PERFECT, data.beat_duration, BEAT_DELAY)
 
 func _process(delta: float):
 	if _beat_hit:
