@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://buqsg2peh5e0b"]
+
+[ext_resource type="Script" path="res://Synchronizer.gd" id="1_moawr"]
+[ext_resource type="AudioStream" uid="uid://dykm16tl242bj" path="res://RhythmGame/Tracks/Cephalopod/Cephalopod.ogg" id="2_xa63l"]
+
+[node name="RhythmGameDemo" type="Node2D"]
+
+[node name="Synchronizer" type="Node" parent="."]
+script = ExtResource("1_moawr")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Synchronizer"]
+stream = ExtResource("2_xa63l")
