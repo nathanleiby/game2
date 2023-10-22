@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmaibfro0yqmj"]
+
+[ext_resource type="PackedScene" uid="uid://bv31ov71hmmj5" path="res://RhythmGame/Tracks/Cephalopod/Cephalopod.tscn" id="1_ccmqp"]
+
+[node name="Patterns" type="Node2D"]
+
+[node name="Cephalopod" parent="." instance=ExtResource("1_ccmqp")]
+
+[node name="Cephalopod2" parent="." instance=ExtResource("1_ccmqp")]

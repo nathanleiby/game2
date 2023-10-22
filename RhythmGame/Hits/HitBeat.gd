@@ -33,7 +33,7 @@ func _ready():
 	_animation_player.play("show")
 
 func setup(data: Dictionary):
-	self.order_number = data.half_beat
+	self.order_number = data.order_number
 	global_position = data.global_position
 	_sprite.frame = data.color
 	_speed = 1.0 / data.beat_duration / BEAT_DELAY

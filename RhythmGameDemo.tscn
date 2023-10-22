@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://buqsg2peh5e0b"]
+[gd_scene load_steps=10 format=3 uid="uid://buqsg2peh5e0b"]
 
 [ext_resource type="Script" path="res://RhythmGameDemo.gd" id="1_d6mxb"]
 [ext_resource type="Script" path="res://Synchronizer.gd" id="1_k8yt3"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cn1yketotr4ck" path="res://RhythmGame/Hits/HitBeat.tscn" id="4_k63nh"]
 [ext_resource type="Texture2D" uid="uid://mtm3sujjgbjq" path="res://RhythmGame/UI/background_shapes.png" id="5_m703h"]
 [ext_resource type="PackedScene" uid="uid://ddvulvy5kxjd2" path="res://RhythmGame/UI/TrackPlaying/UITrackPlaying.tscn" id="6_8lgwv"]
+[ext_resource type="PackedScene" uid="uid://bmaibfro0yqmj" path="res://RhythmGame/Editor/Patterns.tscn" id="7_2o1mh"]
 
 [node name="RhythmGameDemo" type="Node2D"]
 script = ExtResource("1_d6mxb")
@@ -22,6 +23,8 @@ stream = ExtResource("2_ir51o")
 [node name="HitSpawner" type="Node" parent="."]
 script = ExtResource("3_bnvnq")
 hit_beat = ExtResource("4_k63nh")
+
+[node name="Patterns" parent="HitSpawner" instance=ExtResource("7_2o1mh")]
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -20

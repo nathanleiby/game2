@@ -6,6 +6,9 @@ extends Node
 const MAX_X: int = 1920
 const MAX_Y: int = 1080
 
+var _stacks = {}
+@onready var patterns := $Patterns
+
 var _stack_current = [] # array of dicts representing what to spawn
 
 func _spawn_beat(msg: Dictionary):
@@ -36,13 +39,23 @@ func _ready():
 	Events.connect("half_beat_incremented", _spawn_beat)
 	
 	# TODO: testing..
-	_generate_stack()
+	_generate_stacks()
+	_select_stack({name="Cephalopod"})
 
-func _generate_stack():
-	for i in range(10):
-		var hit_beat_data = {}
-		if i % 2 == 1:
-			hit_beat_data.color = randi_range(0,5) # was: int(rand_range(0,5))
-			hit_beat_data.global_position = i * Vector2(100, 100)
-		
-		_stack_current.append(hit_beat_data)
+func _select_stack(msg: Dictionary):
+	print("select stack", msg)
+	# _stack_current = _stacks[msg.name].stack # TODO: error in tuto
+	_stack_current = _stacks[msg.name]
+
+func _generate_stacks():
+	for pattern in patterns.get_children():
+		_stacks[pattern.name] = []
+		for chunk in pattern.get_children():
+			# assign a random color to each song chunk
+			var sprite_frame := randi_range(0, 5)
+			for placer in chunk.get_children():
+				var hit_beat_data: Dictionary = placer.get_data()
+				hit_beat_data.color = sprite_frame
+				_stacks[pattern.name].append(hit_beat_data)
+	
+	patterns.queue_free()
