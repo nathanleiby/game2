@@ -1,9 +1,63 @@
-[gd_scene load_steps=5 format=3 uid="uid://bo8svgpppa7m3"]
+[gd_scene load_steps=9 format=3 uid="uid://bo8svgpppa7m3"]
 
 [ext_resource type="PackedScene" uid="uid://g1i66en76ja2" path="res://RhythmGame/UI/TrackSelector/track_tiles.tscn" id="1_8xi8u"]
 [ext_resource type="PackedScene" uid="uid://b82pdodm7ttyg" path="res://RhythmGame/UI/LabelCustom.tscn" id="2_g0csi"]
 [ext_resource type="Texture2D" uid="uid://n3gehtpwmlfl" path="res://RhythmGame/UI/TrackSelector/button_go_normal.png" id="3_xmta0"]
 [ext_resource type="Texture2D" uid="uid://bqrtuws6x6hqc" path="res://RhythmGame/UI/TrackSelector/button_go_hover.png" id="4_psu0h"]
+
+[sub_resource type="Animation" id="Animation_dw6gd"]
+resource_name = "fade_in_track"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 2,
+"values": [1.66533e-15]
+}
+
+[sub_resource type="Animation" id="Animation_3867h"]
+resource_name = "fade_out_track"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 2,
+"values": [-80.0]
+}
+
+[sub_resource type="Animation" id="Animation_66lm8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.66533e-15]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_27a48"]
+_data = {
+"RESET": SubResource("Animation_66lm8"),
+"fade_in_track": SubResource("Animation_dw6gd"),
+"fade_out_track": SubResource("Animation_3867h")
+}
 
 [node name="UITrackSelector" type="Control"]
 layout_mode = 3
@@ -41,3 +95,10 @@ grow_horizontal = 2
 grow_vertical = 0
 texture_normal = ExtResource("3_xmta0")
 texture_hover = ExtResource("4_psu0h")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_27a48")
+}
