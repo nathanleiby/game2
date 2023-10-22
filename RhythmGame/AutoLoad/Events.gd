@@ -8,3 +8,5 @@ signal half_beat_incremented(msg)
 signal scored(msg)
 
 signal track_finished
+
+signal track_selected(msg)

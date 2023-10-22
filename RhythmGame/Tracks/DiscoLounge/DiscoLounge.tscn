@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfy3hhekntyoy"]
+
+[ext_resource type="PackedScene" uid="uid://cy3o7ak51hw1s" path="res://RhythmGame/Editor/placer_rest.tscn" id="1_nxii3"]
+[ext_resource type="PackedScene" uid="uid://bl0xtbj3jonll" path="res://RhythmGame/Editor/placer_hit_beat.tscn" id="2_glh2y"]
+
+[node name="DiscoLounge" type="Node2D"]
+
+[node name="Intro" type="Node2D" parent="."]
+
+[node name="PlacerRest" parent="Intro" instance=ExtResource("1_nxii3")]
+position = Vector2(1440, 96)
+duration = 4
+
+[node name="PlacerRest2" parent="Intro" instance=ExtResource("1_nxii3")]
+position = Vector2(1248, 96)
+duration = 3
+
+[node name="1" type="Node2D" parent="."]
+
+[node name="PlacerHitBeat" parent="1" instance=ExtResource("2_glh2y")]
+position = Vector2(768, 96)
+duration = 4
+
+[node name="PlacerRest" parent="1" instance=ExtResource("1_nxii3")]
+position = Vector2(672, 96)
+duration = 4
+
+[node name="PlacerHitBeat2" parent="1" instance=ExtResource("2_glh2y")]
+position = Vector2(480, 96)
+
+[node name="PlacerHitBeat3" parent="1" instance=ExtResource("2_glh2y")]
+position = Vector2(288, 96)
+
+[node name="PlacerHitBeat4" parent="1" instance=ExtResource("2_glh2y")]
+position = Vector2(96, 96)
+duration = 4
+
+[node name="2" type="Node2D" parent="."]
+
+[node name="3" type="Node2D" parent="."]

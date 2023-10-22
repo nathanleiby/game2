@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxydmtmdqwks5"]
+
+[ext_resource type="Script" path="res://RhythmGame/UI/TrackSelector/track_tile.gd" id="1_aa7q3"]
+[ext_resource type="Texture2D" uid="uid://oo6odlecu50i" path="res://RhythmGame/Tracks/Cephalopod/icon_cephalopod.png" id="1_euyvf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ac5n1"]
+size = Vector2(400, 400)
+
+[node name="TrackTile" type="Area2D"]
+script = ExtResource("1_aa7q3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_euyvf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ac5n1")

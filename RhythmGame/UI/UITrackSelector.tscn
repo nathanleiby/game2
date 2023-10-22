@@ -1,9 +1,29 @@
-[gd_scene load_steps=9 format=3 uid="uid://bo8svgpppa7m3"]
+[gd_scene load_steps=14 format=3 uid="uid://bo8svgpppa7m3"]
 
+[ext_resource type="Script" path="res://RhythmGame/UI/UITrackSelector.gd" id="1_3wv5c"]
 [ext_resource type="PackedScene" uid="uid://g1i66en76ja2" path="res://RhythmGame/UI/TrackSelector/track_tiles.tscn" id="1_8xi8u"]
 [ext_resource type="PackedScene" uid="uid://b82pdodm7ttyg" path="res://RhythmGame/UI/LabelCustom.tscn" id="2_g0csi"]
+[ext_resource type="Resource" uid="uid://bvdye61oe6fbd" path="res://RhythmGame/Tracks/Cephalopod/cephalopod.tres" id="2_gd5iw"]
+[ext_resource type="Resource" uid="uid://kmobqiqfrs3j" path="res://RhythmGame/Tracks/DiscoLounge/disco_lounge.tres" id="3_ke2mi"]
 [ext_resource type="Texture2D" uid="uid://n3gehtpwmlfl" path="res://RhythmGame/UI/TrackSelector/button_go_normal.png" id="3_xmta0"]
+[ext_resource type="Resource" uid="uid://c65jhmu411x51" path="res://RhythmGame/Tracks/Werq/werq.tres" id="4_42vrp"]
 [ext_resource type="Texture2D" uid="uid://bqrtuws6x6hqc" path="res://RhythmGame/UI/TrackSelector/button_go_hover.png" id="4_psu0h"]
+[ext_resource type="PackedScene" uid="uid://cxydmtmdqwks5" path="res://RhythmGame/UI/TrackSelector/track_tile.tscn" id="5_kv2y5"]
+
+[sub_resource type="Animation" id="Animation_66lm8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.66533e-15]
+}
 
 [sub_resource type="Animation" id="Animation_dw6gd"]
 resource_name = "fade_in_track"
@@ -37,21 +57,6 @@ tracks/0/keys = {
 "values": [-80.0]
 }
 
-[sub_resource type="Animation" id="Animation_66lm8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.66533e-15]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_27a48"]
 _data = {
 "RESET": SubResource("Animation_66lm8"),
@@ -66,11 +71,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_3wv5c")
 
-[node name="TrackCarousel" type="Marker2D" parent="."]
-position = Vector2(960, 240)
+[node name="Centered" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
 
-[node name="TrackTiles" parent="TrackCarousel" instance=ExtResource("1_8xi8u")]
+[node name="TrackCarousel" type="Marker2D" parent="Centered"]
+position = Vector2(2.08165e-12, 200)
+
+[node name="TrackTiles" parent="Centered/TrackCarousel" instance=ExtResource("1_8xi8u")]
+tracks = Array[Resource]([ExtResource("3_ke2mi"), ExtResource("2_gd5iw"), ExtResource("4_42vrp")])
+track_tile_scene = ExtResource("5_kv2y5")
 
 [node name="TrackName" parent="." instance=ExtResource("2_g0csi")]
 layout_mode = 1
@@ -78,7 +90,9 @@ anchors_preset = 14
 anchor_left = 0.0
 anchor_right = 1.0
 offset_left = 0.0
+offset_top = -13.0
 offset_right = 0.0
+offset_bottom = 13.0
 text = "Cephalopod"
 
 [node name="GoButton" type="TextureButton" parent="."]
@@ -102,3 +116,5 @@ texture_hover = ExtResource("4_psu0h")
 libraries = {
 "": SubResource("AnimationLibrary_27a48")
 }
+
+[connection signal="pressed" from="GoButton" to="." method="_on_go_button_pressed"]

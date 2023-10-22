@@ -15,6 +15,15 @@ func play_audio():
 	_stream.play()
 
 func _ready():
+	Events.connect("track_selected", _load_track)
+	
+func _load_track(msg: Dictionary):
+	print("_load_track:", msg)
+	# set speed
+	bpm = msg.bpm
+	_beat_duration = 60.0 / bpm
+	_half_beat_duration = _beat_duration * 0.5
+	
 	play_audio()
 
 func _process(_delta: float) -> void:

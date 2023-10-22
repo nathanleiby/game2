@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="TrackData" load_steps=3 format=3 uid="uid://kmobqiqfrs3j"]
+
+[ext_resource type="Texture2D" uid="uid://c0d1f5qslisef" path="res://RhythmGame/Tracks/DiscoLounge/icon_disco_lounge.png" id="1_ve1ma"]
+[ext_resource type="Script" path="res://RhythmGame/Tracks/TrackData.gd" id="2_5kgbr"]
+
+[resource]
+script = ExtResource("2_5kgbr")
+label = "Disco Lounge"
+stream = "res://RhythmGame/Tracks/DiscoLounge/DiscoLounge.ogg"
+bpm = 124
+icon = ExtResource("1_ve1ma")
+artist = "Kevin MacLeod"
