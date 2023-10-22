@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://bo8svgpppa7m3"]
+
+[ext_resource type="PackedScene" uid="uid://g1i66en76ja2" path="res://RhythmGame/UI/TrackSelector/track_tiles.tscn" id="1_8xi8u"]
+[ext_resource type="PackedScene" uid="uid://b82pdodm7ttyg" path="res://RhythmGame/UI/LabelCustom.tscn" id="2_g0csi"]
+[ext_resource type="Texture2D" uid="uid://n3gehtpwmlfl" path="res://RhythmGame/UI/TrackSelector/button_go_normal.png" id="3_xmta0"]
+[ext_resource type="Texture2D" uid="uid://bqrtuws6x6hqc" path="res://RhythmGame/UI/TrackSelector/button_go_hover.png" id="4_psu0h"]
+
+[node name="UITrackSelector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TrackCarousel" type="Marker2D" parent="."]
+position = Vector2(960, 240)
+
+[node name="TrackTiles" parent="TrackCarousel" instance=ExtResource("1_8xi8u")]
+
+[node name="TrackName" parent="." instance=ExtResource("2_g0csi")]
+layout_mode = 1
+anchors_preset = 14
+anchor_left = 0.0
+anchor_right = 1.0
+offset_left = 0.0
+offset_right = 0.0
+text = "Cephalopod"
+
+[node name="GoButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -170.0
+offset_top = -340.0
+offset_right = 170.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("3_xmta0")
+texture_hover = ExtResource("4_psu0h")
