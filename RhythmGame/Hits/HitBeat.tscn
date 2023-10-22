@@ -1,9 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://cn1yketotr4ck"]
+[gd_scene load_steps=12 format=3 uid="uid://cn1yketotr4ck"]
 
 [ext_resource type="Texture2D" uid="uid://ddak88fmlpivk" path="res://RhythmGame/Hits/hit_sprites.png" id="1_18ds6"]
 [ext_resource type="Script" path="res://RhythmGame/Hits/HitBeat.gd" id="1_eh67a"]
 [ext_resource type="PackedScene" uid="uid://b82pdodm7ttyg" path="res://RhythmGame/UI/LabelCustom.tscn" id="2_8d185"]
+[ext_resource type="Shader" path="res://RhythmGame/Hits/Shader.gdshader" id="3_llrpe"]
 [ext_resource type="PackedScene" uid="uid://c0ser5hx236gc" path="res://RhythmGame/Hits/TargetCircle.tscn" id="4_wvley"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2rnsd"]
+resource_local_to_scene = true
+shader = ExtResource("3_llrpe")
+shader_parameter/torus_thickness = 0.03
+shader_parameter/torus_hardness = -2.0
+shader_parameter/torus_radius = 0.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5nued"]
 radius = 75.0
@@ -81,6 +89,7 @@ modulate = Color(1, 1, 1, 0)
 script = ExtResource("1_eh67a")
 
 [node name="TargetCircle" parent="." instance=ExtResource("4_wvley")]
+material = SubResource("ShaderMaterial_2rnsd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_18ds6")
