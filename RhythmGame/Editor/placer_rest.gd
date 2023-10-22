@@ -13,7 +13,7 @@ class_name PlacerRest
 		
 var _order_number := 1
 
-func enter_tree():
+func _enter_tree():
 	_order_number = get_index() + 1
 	$OrderNumber.text = str(_order_number)
 
