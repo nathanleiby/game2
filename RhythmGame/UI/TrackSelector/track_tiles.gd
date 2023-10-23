@@ -77,7 +77,14 @@ func _on_align_timer_timeout():
 
 func _update_tile_visuals():
 	var carousel_position_x: float = get_parent().global_position.x
+	
+	var viewport_boundary_with_margin := get_viewport_rect().grow(200.0)
 	for track_tile in _track_tiles:
+		if not viewport_boundary_with_margin.has_point(track_tile.global_position):
+			# perf improvement -- skip tiles outside viewport
+			# Alternative approach: VisibilityEnabler2d / VisibilityNotifier2D
+			continue
+		
 		var distance_to_view_center: float = abs(track_tile.global_position.x - carousel_position_x)
 		
 		var distance_normalized = remap(distance_to_view_center, 0.0, carousel_position_x, 0.0, 1.0)
