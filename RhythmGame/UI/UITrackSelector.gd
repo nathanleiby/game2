@@ -7,7 +7,8 @@ var _current_track_data: TrackData
 @onready var _animation_player := $AnimationPlayer
 
 func _ready():
-	update_track_info($Centered/TrackCarousel/TrackTiles.get_child(0))
+	# set a default track
+	update_track_info($TrackCarousel/TrackTiles/Tracks.get_child(0))
 	
 func update_track_info(track_tile: TrackTile):
 	_current_track_data = track_tile.track_data
@@ -22,3 +23,6 @@ func update_track_info(track_tile: TrackTile):
 func _on_go_button_pressed():
 	Events.emit_signal("track_selected", _current_track_data.as_dict())
 	queue_free()
+
+func _on_select_area_track_selected(track_tile):
+	update_track_info(track_tile)

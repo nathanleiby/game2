@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bo8svgpppa7m3"]
+[gd_scene load_steps=18 format=3 uid="uid://bo8svgpppa7m3"]
 
 [ext_resource type="Script" path="res://RhythmGame/UI/UITrackSelector.gd" id="1_3wv5c"]
 [ext_resource type="PackedScene" uid="uid://g1i66en76ja2" path="res://RhythmGame/UI/TrackSelector/track_tiles.tscn" id="1_8xi8u"]
@@ -9,6 +9,14 @@
 [ext_resource type="Resource" uid="uid://c65jhmu411x51" path="res://RhythmGame/Tracks/Werq/werq.tres" id="4_42vrp"]
 [ext_resource type="Texture2D" uid="uid://bqrtuws6x6hqc" path="res://RhythmGame/UI/TrackSelector/button_go_hover.png" id="4_psu0h"]
 [ext_resource type="PackedScene" uid="uid://cxydmtmdqwks5" path="res://RhythmGame/UI/TrackSelector/track_tile.tscn" id="5_kv2y5"]
+[ext_resource type="Script" path="res://RhythmGame/UI/DragDetector.gd" id="7_tfpd0"]
+[ext_resource type="Script" path="res://RhythmGame/UI/SelectArea.gd" id="8_2o48r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_man10"]
+size = Vector2(1920, 465)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iykwc"]
+size = Vector2(40, 400)
 
 [sub_resource type="Animation" id="Animation_66lm8"]
 length = 0.001
@@ -71,18 +79,28 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_3wv5c")
 
-[node name="Centered" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 0
+[node name="TrackCarousel" type="Marker2D" parent="."]
+position = Vector2(960, 240)
 
-[node name="TrackCarousel" type="Marker2D" parent="Centered"]
-position = Vector2(2.08165e-12, 200)
-
-[node name="TrackTiles" parent="Centered/TrackCarousel" instance=ExtResource("1_8xi8u")]
+[node name="TrackTiles" parent="TrackCarousel" instance=ExtResource("1_8xi8u")]
 tracks = Array[Resource]([ExtResource("3_ke2mi"), ExtResource("2_gd5iw"), ExtResource("4_42vrp")])
 track_tile_scene = ExtResource("5_kv2y5")
+
+[node name="DragDetector" type="Area2D" parent="TrackCarousel"]
+monitorable = false
+script = ExtResource("7_tfpd0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrackCarousel/DragDetector"]
+shape = SubResource("RectangleShape2D_man10")
+
+[node name="SelectArea" type="Area2D" parent="TrackCarousel"]
+script = ExtResource("8_2o48r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrackCarousel/SelectArea"]
+shape = SubResource("RectangleShape2D_iykwc")
 
 [node name="TrackName" parent="." instance=ExtResource("2_g0csi")]
 layout_mode = 1
@@ -117,4 +135,9 @@ libraries = {
 "": SubResource("AnimationLibrary_27a48")
 }
 
+[connection signal="dragged" from="TrackCarousel/DragDetector" to="TrackCarousel/TrackTiles" method="_on_drag_detector_dragged"]
+[connection signal="input_event" from="TrackCarousel/DragDetector" to="TrackCarousel/DragDetector" method="_on_input_event"]
+[connection signal="area_entered" from="TrackCarousel/SelectArea" to="TrackCarousel/SelectArea" method="_on_area_entered"]
+[connection signal="track_selected" from="TrackCarousel/SelectArea" to="." method="_on_select_area_track_selected"]
+[connection signal="track_selected" from="TrackCarousel/SelectArea" to="TrackCarousel/TrackTiles" method="_on_select_area_track_selected"]
 [connection signal="pressed" from="GoButton" to="." method="_on_go_button_pressed"]
