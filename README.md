@@ -22,3 +22,11 @@ from https://gdquest.mavenseed.com/courses/godot-2d-secrets
 Questions
 
 - mouse "filter" -> ignore seems like a tricky thing to find if it's broken... is there a quick way to see what's catching input events?
+
+Next Steps
+
+- Playable on Itch
+- Add Hit Roller mechanic -- https://gdquest.mavenseed.com/lessons/the-roller-mechanic -- skipped in tutorial for now
+- To make this game playable, need good patterns.
+  - idea: analyze the audio to make good patterns
+  - improve the editor + DIY (or use an existing editor and export to this game)
