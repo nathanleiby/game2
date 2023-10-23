@@ -18,3 +18,7 @@ from https://gdquest.mavenseed.com/courses/godot-2d-secrets
 - I had to mouse ignore the ColorRect (which wraps the shader), else it was blocking clicks on the HitBeat. Seems strange since it's behind the sprite, but not sure
 - I accidentally shadowed a variable (var shrink_speed) instead of using the global value. GodotScript then allowed me to do math using the global value which was unset, thus gave a 0 value.. didn't shrink :(
 - can spawn game wherever you want on screen (or a 2nd screen) https://www.reddit.com/r/godot/comments/ijqtoa/godot_development_with_ultrawide_monitors/
+
+Questions
+
+- mouse "filter" -> ignore seems like a tricky thing to find if it's broken... is there a quick way to see what's catching input events?

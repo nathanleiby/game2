@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://buqsg2peh5e0b"]
+[gd_scene load_steps=12 format=3 uid="uid://buqsg2peh5e0b"]
 
 [ext_resource type="Script" path="res://RhythmGameDemo.gd" id="1_d6mxb"]
 [ext_resource type="Script" path="res://Synchronizer.gd" id="1_k8yt3"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ddvulvy5kxjd2" path="res://RhythmGame/UI/TrackPlaying/UITrackPlaying.tscn" id="6_8lgwv"]
 [ext_resource type="PackedScene" uid="uid://bmaibfro0yqmj" path="res://RhythmGame/Editor/Patterns.tscn" id="7_2o1mh"]
 [ext_resource type="PackedScene" uid="uid://bo8svgpppa7m3" path="res://RhythmGame/UI/UITrackSelector.tscn" id="10_kncnf"]
+[ext_resource type="PackedScene" uid="uid://68uyy6qv23cp" path="res://RhythmGame/UI/TrackFinished/ui_track_finished.tscn" id="11_b3tmc"]
 
 [node name="RhythmGameDemo" type="Node2D"]
 script = ExtResource("1_d6mxb")
@@ -41,3 +42,5 @@ centered = false
 visible = false
 
 [node name="UITrackSelector" parent="UI" instance=ExtResource("10_kncnf")]
+
+[node name="UITrackFinished" parent="UI" instance=ExtResource("11_b3tmc")]

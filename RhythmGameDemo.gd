@@ -7,6 +7,7 @@ extends Node2D
 # We connect to the `Events.scored` signal.
 func _ready() -> void:
 	Events.connect("scored", _create_score_fx)
+	$UI/UITrackFinished.visible = false # TODO: not sure why it's starting true..
 
 func _create_score_fx(msg: Dictionary) -> void:
 	var new_sprite_fx := sprite_fx.instantiate()
